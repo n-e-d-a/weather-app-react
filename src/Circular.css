@@ -1,0 +1,76 @@
+:root {
+  --background-color-1: rgb(152, 213, 228);
+  --sun-color-base: #f2f5a3;
+  --sun-color-leaf: #e9ebba;
+}
+.main {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.main-row {
+  position: relative;
+  padding: 0;
+  align-items: center;
+}
+.LeftInf {
+  list-style: none;
+  font-size: 10px;
+  padding: 0;
+  top: 10px;
+}
+
+.RightInf {
+  list-style: none;
+  font-size: 10px;
+  padding: 0;
+}
+ul {
+  list-style: none;
+  position: relative;
+  text-align: center;
+}
+.toggle {
+  position: absolute;
+  top: 20%;
+}
+.main-bottom-col {
+  padding: 0;
+  align-items: center;
+  padding-left: 110px;
+}
+.main-bottom-col .temperature{
+  font-weight: bold;
+  font-size: 24px;
+}
+.main-bottom-col .units{
+  position: relative;
+top:-10px;
+font-size: 16px;
+margin-left: 5px;
+}
+
+.small-circles {
+  border-radius: 0% 100% 32% 68% / 0% 68% 32% 100%;
+}
+#right-top {
+  transform: rotate(90deg);
+}
+#right-bottom {
+  transform: rotate(200deg);
+}
+#left-bottom {
+  transform: rotate(-110deg);
+}
+#right {
+  transform: rotate(135deg);
+}
+#left {
+  transform: rotate(-50deg);
+}
+#top {
+  transform: rotate(45deg);
+}

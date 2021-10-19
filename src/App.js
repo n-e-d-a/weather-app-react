@@ -1,10 +1,13 @@
+import Circular from "./Circular";
 
-import './App.css';
+import "./App.css";
 
 export default function App() {
   return (
     <div className="App">
-      weather app
+      <Circular />
+      
+      <br/>
       <footer>
         This project was coded by {""}
         <a
@@ -22,17 +25,15 @@ export default function App() {
         >
           Open-Sourced on GitHub
         </a>
-        {""} and {""} 
+        {""} and {""}
         <a
           href="https://inspiring-lamport-23bc03.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
         >
-         Hosted on  Netlify
+          Hosted on Netlify
         </a>
       </footer>
     </div>
   );
 }
-
-
