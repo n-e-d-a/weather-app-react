@@ -1,5 +1,7 @@
 import React ,{useState} from "react";
 import { Planet } from "react-planet";
+import FormatedDate from "./FormatedDate";
+import FormatedMonth from "./FormatedMonth";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
 import "./Circular.css";
@@ -9,8 +11,7 @@ export default function Circular() {
    const[weatherData,setWeatherData]=useState({ready:false});
    
   function handleResponse(response) {
-    
-    setWeatherData({
+      setWeatherData({
       ready:true,
       temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
@@ -18,7 +19,7 @@ export default function Circular() {
       city: response.data.name,
       description: response.data.weather[0].description,
       iconUrl: "http://openweathermap.org/img/wn/04d@2x.png",
-      date: "Monday",
+      date: new Date(response.data.dt*1000),
     });
    
   }
@@ -58,15 +59,8 @@ export default function Circular() {
                       </form>
                       <div className="container  main-row ">
                         <div className="row  ">
-                          <div className="col-4 mt-4">
-                            <ul className="LeftInf">
-                              <li className="date" id="date-num">
-                                October 4
-                              </li>
-                              <li className="date " id="date-hour">
-                                16:46
-                              </li>
-                            </ul>
+                          <div className="col-4 mt-4 LeftInf">
+                            <FormatedMonth date={weatherData.date} />
                           </div>
                           <div className="col-4 main-icon">
                             <img
@@ -96,7 +90,7 @@ export default function Circular() {
 
                       <ul className="main-bottom-col">
                         <li className="text-capitalize">
-                          {weatherData.date}{" "}
+                          <FormatedDate date={weatherData.date} />
                         </li>
                         <li className="text-capitalize">
                           {weatherData.description}
