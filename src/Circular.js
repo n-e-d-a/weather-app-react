@@ -1,13 +1,13 @@
 import React ,{useState} from "react";
 import { Planet } from "react-planet";
-import FormatedDate from "./FormatedDate";
-import FormatedMonth from "./FormatedMonth";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
 import "./Circular.css";
+import Weatherinfo from "./Weatherinfo";
 
-export default function Circular() {
- 
+
+export default function Circular(props) {
+   const[city,setCity]=useState(props.defaultCity);
    const[weatherData,setWeatherData]=useState({ready:false});
    
   function handleResponse(response) {
@@ -23,6 +23,21 @@ export default function Circular() {
     });
    
   }
+  function Search(){
+ const apiKey = "04b56cea58af88ba207e488d6cd103c8";
+ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+ axios.get(apiUrl).then(handleResponse);
+  }
+
+ function handleSubmit(event) {
+   event.preventDefault();
+   Search();
+   //search city
+ }
+ function handleCityChange(event) {
+setCity(event.target.value);
+ }
+
     if (weatherData.ready) {
       return (
         <div className="main">
@@ -36,10 +51,11 @@ export default function Circular() {
                   backgroundColor: "#e9ebba",
                 }}
               >
+                <Weatherinfo data={weatherData} />
                 <div className="container">
                   <div className="toggle">
                     <div className="input-group mb-3 ">
-                      <form className="ms-4">
+                      <form className="ms-4" onSubmit={handleSubmit}>
                         <div className="col-auto">
                           <div className="input-group mb-2">
                             <div className="input-group-prepend">
@@ -53,60 +69,16 @@ export default function Circular() {
                               id="inlineFormInputGroup"
                               placeholder="Enter city"
                               autoFocus="on"
+                              onChange={handleCityChange}
                             />
                           </div>
                         </div>
                       </form>
-                      <div className="container  main-row ">
-                        <div className="row  ">
-                          <div className="col-4 mt-4 LeftInf">
-                            <FormatedMonth date={weatherData.date} />
-                          </div>
-                          <div className="col-4 main-icon">
-                            <img
-                              src={weatherData.iconUrl}
-                              alt={weatherData.description}
-                              id="icon"
-                            />
-                          </div>
-
-                          <div className="col-4 mt-4">
-                            <ul className="RightInf mt-2">
-                              <li>
-                                Humidity:{" "}
-                                <span id="feels-like">
-                                  {weatherData.humidity}
-                                </span>
-                                <sup>°</sup>
-                              </li>
-                              <li>
-                                Wind:{" "}
-                                <span id="wind-km">{weatherData.wind}</span>km/h
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <ul className="main-bottom-col">
-                        <li className="text-capitalize">
-                          <FormatedDate date={weatherData.date} />
-                        </li>
-                        <li className="text-capitalize">
-                          {weatherData.description}
-                        </li>
-                        <li>
-                          {" "}
-                          <span className="temperature">
-                            {weatherData.temperature}
-                          </span>
-                          <span className="units">°c</span>{" "}
-                        </li>
-                      </ul>
+                      
                     </div>
                   </div>
                 </div>
-                <div className="menu" id="menu"></div>
+                {/* <div className="menu" id="menu"></div> */}
               </div>
             }
             open
@@ -194,10 +166,7 @@ export default function Circular() {
         </div>
       );
     } else {
-      let city = "london";
-      const apiKey = "04b56cea58af88ba207e488d6cd103c8";
-      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-      axios.get(apiUrl).then(handleResponse);
+     Search();
       return"loding...";
     }
   

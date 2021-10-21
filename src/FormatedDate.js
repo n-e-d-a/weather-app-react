@@ -1,4 +1,6 @@
 import React from "react";
+import "./Circular.css";
+
 
 export default function FormatedDate(props){
     let days=["Sunday", "Monday", "Tuesday" , "Wednsday" , "Thursday" , "Friday" , "Saturday"]

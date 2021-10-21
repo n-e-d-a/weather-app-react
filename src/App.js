@@ -5,7 +5,7 @@ import "./App.css";
 export default function App() {
   return (
     <div className="App">
-      <Circular />
+      <Circular defaultCity="London"/>
       
       <br/>
       <footer>

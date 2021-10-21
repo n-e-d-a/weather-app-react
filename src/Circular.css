@@ -13,7 +13,7 @@
 
 .main-row {
   position: relative;
-  padding: 0;
+  padding-top:30px;
   align-items: center;
 }
 .LeftInf {
@@ -38,9 +38,9 @@ ul {
   top: 20%;
 }
 .main-bottom-col {
-  padding: 0;
+ 
   align-items: center;
-  padding-left: 110px;
+  padding-left: 15px;
 }
 .main-bottom-col .temperature{
   font-weight: bold;
@@ -74,3 +74,5 @@ margin-left: 5px;
 #top {
   transform: rotate(45deg);
 }
+
+
