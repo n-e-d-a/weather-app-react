@@ -18,7 +18,7 @@ export default function Circular(props) {
         wind: Math.round(response.data.wind.speed),
         city: response.data.name,
         description: response.data.weather[0].description,
-        iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+        icon: response.data.weather[0].icon,
         date: new Date(response.data.dt * 1000),
       });
    
@@ -40,6 +40,7 @@ setCity(event.target.value);
 
     if (weatherData.ready) {
       return (
+        <div className="weather">
         <div className="main">
           <Planet
             centerContent={
@@ -48,7 +49,7 @@ setCity(event.target.value);
                   height: 350,
                   width: 350,
                   borderRadius: "50%",
-                  backgroundColor: "#e9ebba",
+                  backgroundColor: "rgba(255 ,255 , 1, 0.2)",
                 }}
               >
                 <Weatherinfo data={weatherData} />
@@ -74,7 +75,6 @@ setCity(event.target.value);
                           </div>
                         </div>
                       </form>
-                      
                     </div>
                   </div>
                 </div>
@@ -163,6 +163,7 @@ setCity(event.target.value);
               }}
             />
           </Planet>
+        </div>
         </div>
       );
     } else {

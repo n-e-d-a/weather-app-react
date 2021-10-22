@@ -3,13 +3,18 @@
   --sun-color-base: #f2f5a3;
   --sun-color-leaf: #e9ebba;
 }
+.weather{
+  background: blue;
+}
+
 .main {
+  
   position: absolute;
   top: 40%;
   left: 40%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-}
+  }
 
 .main-row {
   position: relative;
@@ -74,5 +79,6 @@ margin-left: 5px;
 #top {
   transform: rotate(45deg);
 }
+
 
 

@@ -1,6 +1,7 @@
 import React from "react";
 import FormatedDate from "./FormatedDate";
 import FormatedMonth from "./FormatedMonth";
+import WeatherIcon from "./WeatherIcon";
 import "./Circular.css";
 
 export default function Weatherinfo(props){
@@ -13,11 +14,9 @@ export default function Weatherinfo(props){
               <FormatedMonth date={props.data.date} />
             </div>
             <div className="col-4 main-icon">
-              <img
-                src={props.data.iconUrl}
-                alt={props.data.description}
-                id="icon"
-              />
+              <div className="float-left">
+              <WeatherIcon code={props.data.icon}  />
+              </div>
             </div>
 
             <div className="col-4 mt-4">
