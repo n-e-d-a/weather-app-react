@@ -9,7 +9,7 @@ import Weatherinfo from "./Weatherinfo";
 export default function Circular(props) {
    const[city,setCity]=useState(props.defaultCity);
    const[weatherData,setWeatherData]=useState({ready:false});
-   let[butonOn,setButonOn]=useState(false);
+  
    
   function handleResponse(response) {
       setWeatherData({
@@ -87,13 +87,13 @@ setCity(event.target.value);
                   {/* <div className="menu" id="menu"></div> */}
                 </div>
               }
-              open
+              openByClick
               orbitRadius={300}
               hideOrbit
               mass={4}
               tension={500}
               friction={19}
-              autoClose={butonOn}
+              
               // autoClose
             >
               <div
