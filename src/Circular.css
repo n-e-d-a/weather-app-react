@@ -6,6 +6,9 @@
 .weather{
   background: blue;
 }
+form{
+  padding-left: 10px;
+}
 
 .main {
   
@@ -18,14 +21,17 @@
 
 .main-row {
   position: relative;
-  padding-top:30px;
+  padding-top:50px;
   align-items: center;
+  padding-bottom: 30px;
+ 
 }
 .LeftInf {
   list-style: none;
   font-size: 10px;
   padding: 0;
   top: 10px;
+  text-align: left;
 }
 
 .RightInf {
@@ -35,9 +41,8 @@
 }
 ul {
   list-style: none;
-  position: relative;
-  text-align: center;
-}
+ 
+  }
 .toggle {
   position: absolute;
   top: 20%;
@@ -45,17 +50,24 @@ ul {
 .main-bottom-col {
  
   align-items: center;
-  padding-left: 15px;
+  padding-left: 130px;
+}
+.main-bottom-col ul{
+ position: relative;
+  text-align: center;
+}
+.main-bottom-col a:link{
+  text-decoration: none;
+ 
 }
 .main-bottom-col .temperature{
   font-weight: bold;
   font-size: 24px;
 }
 .main-bottom-col .units{
-  position: relative;
-top:-10px;
+ 
 font-size: 16px;
-margin-left: 5px;
+margin-left: 10px;
 }
 
 .small-circles {
@@ -63,6 +75,13 @@ margin-left: 5px;
 }
 #right-top {
   transform: rotate(90deg);
+}
+.top-writing{
+position: relative;
+ transform: rotate(-45deg);
+ padding-top: 30%;
+ padding-left: 10%;
+ font-size: 26px;
 }
 #right-bottom {
   transform: rotate(200deg);

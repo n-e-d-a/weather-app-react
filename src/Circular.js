@@ -130,7 +130,9 @@ setCity(event.target.value);
                 backgroundColor: "#e9ebba",
               }}
             >
+              <div className="top-writing">
               {weatherData.city}
+              </div>
             </div>
             <div
               className="small-circles"

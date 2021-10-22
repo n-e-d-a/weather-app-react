@@ -3,6 +3,7 @@ import FormatedDate from "./FormatedDate";
 import FormatedMonth from "./FormatedMonth";
 import WeatherIcon from "./WeatherIcon";
 import "./Circular.css";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function Weatherinfo(props){
    
@@ -39,9 +40,8 @@ export default function Weatherinfo(props){
           </li>
           <li className="text-capitalize">{props.data.description}</li>
           <li>
-            {" "}
-            <span className="temperature">{props.data.temperature}</span>
-            <span className="units">°c</span>{" "}
+            <WeatherTemperature celsius={props.data.temperature} />
+           
           </li>
         </ul>
       </div>
