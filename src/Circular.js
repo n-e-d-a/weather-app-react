@@ -87,7 +87,7 @@ setCity(event.target.value);
                   {/* <div className="menu" id="menu"></div> */}
                 </div>
               }
-              openbyClick
+              open
               orbitRadius={300}
               hideOrbit
               mass={4}
