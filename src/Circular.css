@@ -1,8 +1,4 @@
-:root {
-  --background-color-1: rgb(152, 213, 228);
-  --sun-color-base: #f2f5a3;
-  --sun-color-leaf: #e9ebba;
-}
+
 
 form{
   padding-left: 10px;
@@ -74,27 +70,219 @@ margin-left: 10px;
 #right-top {
   transform: rotate(90deg);
 }
+.right-top-writting{
+position: relative;
+ transform: rotate(-90deg);
+ padding-top: 0;
+ padding-left: 10%;
+ font-size: 16px;
+}
+ #right-top-icon{
+  position:absolute;
+ top: -90px; 
+ left:30px;
+ transform: rotate(45deg);
+ }
+#WeatherForcasrDay-right-top{
+  position: absolute;
+left:0px;
+top:-35px;
+transform: rotate(45deg);
+
+}
+#WeatherForcast-temperatures-max-right-top{
+position: absolute;
+left:-20px;
+top:27px;
+transform: rotate(47deg);
+}
+#WeatherForcast-temperatures-min-right-top{
+   position: absolute;
+left:-50px;
+top:0px;
+transform: rotate(47deg);
+opacity: 60%;
+}
+
+#right-bottom {
+  transform: rotate(200deg);
+}
+.right-bottom-writting{
+ position: relative;
+ transform: rotate(150deg);
+ padding-top: 0;
+ padding-left:50%;
+ font-size: 16px; 
+ align-items: center;
+}
+#left-bottom {
+  transform: rotate(-110deg);
+}
+.left-bottom-writting{
+ position: relative;
+ transform: rotate(120deg);
+ font-size: 16px; 
+ }
+#left-bottom-icon{
+ position:absolute;
+ top: 0px; 
+ left:130px;
+ transform: rotate(15deg);
+}
+#WeatherForcast-temperatures-min-left-bottom{
+ position:absolute;
+ top: -112px; 
+ left:170px;
+ transform: rotate(18deg);
+ opacity: 60%;
+}
+#WeatherForcast-temperatures-max-left-bottom{
+ position:absolute;
+ top: -100px; 
+ left:215px;
+transform: rotate(18deg);
+}
+#WeatherForcasrDay-left-bottom{
+position:absolute;
+ top: -50px; 
+ left:165px;
+transform: rotate(15deg);
+}
+
+#right {
+  transform: rotate(135deg);
+}
+.right-writting{
+ position: relative;
+ transform: rotate(-135deg);
+ padding-top: -10px;
+ padding-left:10%;
+ font-size: 16px; 
+  }
+  #right-icon{
+  position:absolute;
+ top: -100px; 
+ left:85px;
+ }
+#WeatherForcasrDay-right{
+  position: absolute;
+left: 20px;
+top:-90px;
+
+}
+#WeatherForcast-temperatures-max-right{
+  position: absolute;
+left: -20px;
+top:-85px;
+}
+#WeatherForcast-temperatures-min-right{
+   position: absolute;
+left: -60px;
+top:-85px;
+opacity: 60%;
+}
+
+#right-bottom-icon{
+ position:absolute;
+ top: -35px; 
+ left:140px;
+ transform: rotate(-15deg);
+}
+#WeatherForcast-temperatures-min-right-bottom{
+ position:absolute;
+ top: -135px; 
+ left:105px;
+ transform: rotate(-18deg);
+ opacity: 60%;
+}
+#WeatherForcast-temperatures-max-right-bottom{
+ position:absolute;
+ top: -148px; 
+ left:150px;
+transform: rotate(-18deg);
+}
+#WeatherForcasrDay-right-bottom{
+position:absolute;
+ top: -85px; 
+ left:135px;
+transform: rotate(-18deg);
+}
+
+#left {
+  transform: rotate(-50deg);
+}.left-writting{
+ position: relative;
+ transform: rotate(48deg);
+ 
+ padding-left:0;
+ font-size: 16px; 
+ align-items: center;
+}
+#left-icon{
+  position:absolute;
+ padding-top: 40px; 
+ padding-left:50px;
+ }
+#WeatherForcasrDay-left{
+  position: absolute;
+padding-left: 140px;
+padding-top:55px;
+
+}
+#WeatherForcast-temperatures-min-left{
+  position: absolute;
+padding-left: 200px;
+padding-top:60px;
+opacity: 60%;
+}
+#WeatherForcast-temperatures-max-left{
+   position: absolute;
+padding-left: 240px;
+padding-top:60px;
+}
+#top {
+  transform: rotate(45deg);
+}
 .top-writing{
 position: relative;
  transform: rotate(-45deg);
  padding-top: 30%;
  padding-left: 10%;
  font-size: 26px;
+ font-weight: bold;
 }
-#right-bottom {
-  transform: rotate(200deg);
+.WeatherForcasrDay{
+  font-weight: 700;
+font-size: 20px;
 }
-#left-bottom {
-  transform: rotate(-110deg);
+#left-top{
+transform: rotate(0deg);
 }
-#right {
-  transform: rotate(135deg);
+#left-top-icon{
+  position:absolute;
+ top: 0px; 
+ left:0px;
+ transform: rotate(-45deg);
+ }
+#WeatherForcasrDay-left-top{
+  position: absolute;
+left:70px;
+top:75px;
+transform: rotate(-45deg);
+
 }
-#left {
-  transform: rotate(-50deg);
+#WeatherForcast-temperatures-max-left-top{
+position: absolute;
+left:130px;
+top:100px;
+transform: rotate(-42deg);
 }
-#top {
-  transform: rotate(45deg);
+#WeatherForcast-temperatures-min-left-top{
+   position: absolute;
+left:100px;
+top:127px;
+transform: rotate(-42deg);
+opacity: 60%;
 }
 
 
