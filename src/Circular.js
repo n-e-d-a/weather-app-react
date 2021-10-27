@@ -9,11 +9,18 @@ import WeatherIcon from "./WeatherIcon";
 export default function Circular(props) {
   const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [coordinates,setCoordinates]=useState();
-   
- 
+  const [latitude,setLatitude]=useState();
+   const [longitude, setLongitude] = useState();
+  const[forcast,setForcast]=useState();
+
+  function ForcastResponse(response) {
+    setForcast(response.data.daily);
+    console.log(forcast[0].temp.max);
+    
+   }
  
   function handleResponse(response) {
+    console.log(response.data);
     setWeatherData({
       ready: true,
       temperature: Math.round(response.data.main.temp),
@@ -23,28 +30,25 @@ export default function Circular(props) {
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
       date: new Date(response.data.dt * 1000),
-      // coordinates: response.data.coord,
+    
       
     });
-    setCoordinates(response.data.coord);
+    setLatitude(response.data.coord.lat);
+    setLongitude(response.data.coord.lon);
+    console.log(response.data.coord);
+    console.log(latitude);
+    console.log(longitude);
+    let apiKeyF = "04b56cea58af88ba207e488d6cd103c8";
+    let apiUrlF = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKeyF}&units=metric`;
+    axios.get(apiUrlF).then(ForcastResponse);
   }
 
-  function ForcastResponse(response) {
-    console.log(response.coordinates);
-  }
- console.log(coordinates);
- let apiKeyF = "04b56cea58af88ba207e488d6cd103c8";
-let longitude = 70.4;
-  let latitide = 74;
- 
-  let apiUrlF = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitide}&lon=${longitude}&appid=${apiKeyF}`;
-  
-axios.get(apiUrlF).then(ForcastResponse);
-
+   
   function Search() {
     const apiKey = "04b56cea58af88ba207e488d6cd103c8";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
+    
   }
 
   function handleSubmit(event) {
@@ -136,12 +140,14 @@ axios.get(apiUrlF).then(ForcastResponse);
                     className="WeatherForcast-temperatures-max"
                     id="WeatherForcast-temperatures-max-left-bottom"
                   >
+                    {/* {forcast[0].temp.max}° */}
                     19°
                   </span>
                   <span
                     className="WeatherForcast-temperatures-min"
                     id="WeatherForcast-temperatures-min-left-bottom"
                   >
+                    {/* {forcast[0].temp.min}° */}
                     10°
                   </span>
                 </div>
