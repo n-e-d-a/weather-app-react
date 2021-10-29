@@ -9,16 +9,17 @@ import WeatherIcon from "./WeatherIcon";
 export default function Circular(props) {
   const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [latitude,setLatitude]=useState();
-   const [longitude, setLongitude] = useState();
-  const[forcast,setForcast]=useState();
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
+  const [forcast, setForcast] = useState();
+  const [loaded, setLodead] = useState(false);
 
   function ForcastResponse(response) {
     setForcast(response.data.daily);
-    console.log(forcast[0].temp.max);
-    
-   }
- 
+    setLodead(true);
+    // console.log(forcast[0].temp.max);
+  }
+
   function handleResponse(response) {
     console.log(response.data);
     setWeatherData({
@@ -30,25 +31,29 @@ export default function Circular(props) {
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
       date: new Date(response.data.dt * 1000),
-    
-      
     });
     setLatitude(response.data.coord.lat);
     setLongitude(response.data.coord.lon);
-    console.log(response.data.coord);
-    console.log(latitude);
-    console.log(longitude);
-    let apiKeyF = "04b56cea58af88ba207e488d6cd103c8";
-    let apiUrlF = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKeyF}&units=metric`;
-    axios.get(apiUrlF).then(ForcastResponse);
+    
   }
 
-   
+  // function Search2(){
+
+  //   console.log(latitude);
+  //   console.log(longitude);
+  //   let apiKeyF = "04b56cea58af88ba207e488d6cd103c8";
+  //   let apiUrlF = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKeyF}&units=metric`;
+  //   axios.get(apiUrlF).then(ForcastResponse);
+  // }
+
   function Search() {
-    const apiKey = "04b56cea58af88ba207e488d6cd103c8";
+    const apiKey = "20293e98d70925447c2442cb9db0edda";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    console.log(city);
+    console.log(apiUrl);
     axios.get(apiUrl).then(handleResponse);
-    
+    let apiUrlF = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrlF).then(ForcastResponse);
   }
 
   function handleSubmit(event) {
@@ -59,9 +64,8 @@ export default function Circular(props) {
   function handleCityChange(event) {
     setCity(event.target.value);
   }
-  
 
-  if (weatherData.ready) {
+  if (weatherData.ready && loaded) {
     return (
       <div className="weather">
         <div className="main">
@@ -85,7 +89,7 @@ export default function Circular(props) {
                             <div className="input-group-prepend">
                               <div
                                 className="input-group-text"
-                                onClick={handleSubmit}
+                                // onClick={handleSubmit}
                               >
                                 <SearchIcon />
                               </div>
@@ -140,15 +144,13 @@ export default function Circular(props) {
                     className="WeatherForcast-temperatures-max"
                     id="WeatherForcast-temperatures-max-left-bottom"
                   >
-                    {/* {forcast[0].temp.max}° */}
-                    19°
+                    {Math.round(forcast[0].temp.max)}°
                   </span>
                   <span
                     className="WeatherForcast-temperatures-min"
                     id="WeatherForcast-temperatures-min-left-bottom"
                   >
-                    {/* {forcast[0].temp.min}° */}
-                    10°
+                    {Math.round(forcast[0].temp.min)}°
                   </span>
                 </div>
                 <span id="left-bottom-icon">
@@ -353,6 +355,7 @@ export default function Circular(props) {
     );
   } else {
     Search();
+
     return "loding...";
   }
 }
