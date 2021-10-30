@@ -5,13 +5,14 @@ import axios from "axios";
 import "./Circular.css";
 import Weatherinfo from "./Weatherinfo";
 import WeatherIcon from "./WeatherIcon";
+import WeatherForcastDay from "./WeatherForcastDay";
 
 export default function Circular(props) {
   const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
-  const [forcast, setForcast] = useState();
+  const [forcast, setForcast] = useState(null);
   const [loaded, setLodead] = useState(false);
 
   function ForcastResponse(response) {
@@ -48,7 +49,7 @@ export default function Circular(props) {
 
   function Search() {
     const apiKey = "20293e98d70925447c2442cb9db0edda";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     console.log(city);
     console.log(apiUrl);
     axios.get(apiUrl).then(handleResponse);
@@ -89,7 +90,7 @@ export default function Circular(props) {
                             <div className="input-group-prepend">
                               <div
                                 className="input-group-text"
-                                // onClick={handleSubmit}
+                                //  onClick={handleSubmit}
                               >
                                 <SearchIcon />
                               </div>
@@ -136,7 +137,7 @@ export default function Circular(props) {
                   className="WeatherForcasrDay"
                   id="WeatherForcasrDay-left-bottom"
                 >
-                  Thu
+                  <WeatherForcastDay data={forcast[3]} />
                 </div>
 
                 <div className="WeatherForcast-temperatures">
@@ -144,17 +145,17 @@ export default function Circular(props) {
                     className="WeatherForcast-temperatures-max"
                     id="WeatherForcast-temperatures-max-left-bottom"
                   >
-                    {Math.round(forcast[0].temp.max)}°
+                    {Math.round(forcast[3].temp.max)}°
                   </span>
                   <span
                     className="WeatherForcast-temperatures-min"
                     id="WeatherForcast-temperatures-min-left-bottom"
                   >
-                    {Math.round(forcast[0].temp.min)}°
+                    {Math.round(forcast[3].temp.min)}°
                   </span>
                 </div>
                 <span id="left-bottom-icon">
-                  <WeatherIcon code="01d" />
+                  <WeatherIcon code={forcast[3].weather[0].icon} />
                 </span>
               </div>
             </div>
@@ -171,23 +172,23 @@ export default function Circular(props) {
             >
               <div className="left-writting">
                 <span id="left-icon">
-                  <WeatherIcon code="01d" />
+                  <WeatherIcon code={forcast[4].weather[0].icon} />
                 </span>
                 <span className="WeatherForcasrDay" id="WeatherForcasrDay-left">
-                  Thu
+                  <WeatherForcastDay data={forcast[4]} />
                 </span>
 
                 <span
                   className="WeatherForcast-temperatures-max"
                   id="WeatherForcast-temperatures-max-left"
                 >
-                  19°
+                  {Math.round(forcast[4].temp.max)}°
                 </span>
                 <span
                   className="WeatherForcast-temperatures-min"
                   id="WeatherForcast-temperatures-min-left"
                 >
-                  10°
+                  {Math.round(forcast[4].temp.min)}°
                 </span>
               </div>
             </div>
@@ -203,13 +204,13 @@ export default function Circular(props) {
             >
               <div className="left-top-writting">
                 <span id="left-top-icon">
-                  <WeatherIcon code="01d" />
+                  <WeatherIcon code={forcast[5].weather[0].icon} />
                 </span>
                 <div
                   className="WeatherForcasrDay"
                   id="WeatherForcasrDay-left-top"
                 >
-                  Thu
+                  <WeatherForcastDay data={forcast[5]} />
                 </div>
 
                 <div className="WeatherForcast-temperatures">
@@ -217,13 +218,13 @@ export default function Circular(props) {
                     className="WeatherForcast-temperatures-min"
                     id="WeatherForcast-temperatures-min-left-top"
                   >
-                    10°
+                    {Math.round(forcast[5].temp.min)}°
                   </span>
                   <span
                     className="WeatherForcast-temperatures-max"
                     id="WeatherForcast-temperatures-max-left-top"
                   >
-                    19°
+                    {Math.round(forcast[5].temp.max)}°
                   </span>
                 </div>
               </div>
@@ -256,22 +257,22 @@ export default function Circular(props) {
                     className="WeatherForcast-temperatures-min"
                     id="WeatherForcast-temperatures-min-right-top"
                   >
-                    10°
+                    {Math.round(forcast[0].temp.min)}°
                   </span>
                   <span
                     className="WeatherForcast-temperatures-max"
                     id="WeatherForcast-temperatures-max-right-top"
                   >
-                    19°
+                    {Math.round(forcast[0].temp.max)}°
                   </span>
                   <span
                     className="WeatherForcasrDay"
                     id="WeatherForcasrDay-right-top"
                   >
-                    Thu
+                    <WeatherForcastDay data={forcast[0]} />
                   </span>
                   <span id="right-top-icon">
-                    <WeatherIcon code="01d" />
+                    <WeatherIcon code={forcast[0].weather[0].icon} />
                   </span>
                 </div>
               </div>
@@ -292,22 +293,22 @@ export default function Circular(props) {
                     className="WeatherForcast-temperatures-min"
                     id="WeatherForcast-temperatures-min-right"
                   >
-                    10°
+                    {Math.round(forcast[1].temp.min)}°
                   </span>
                   <span
                     className="WeatherForcast-temperatures-max"
                     id="WeatherForcast-temperatures-max-right"
                   >
-                    19°
+                    {Math.round(forcast[1].temp.max)}°
                   </span>
                   <span
                     className="WeatherForcasrDay"
                     id="WeatherForcasrDay-right"
                   >
-                    Thu
+                    <WeatherForcastDay data={forcast[1]} />
                   </span>
                   <span id="right-icon">
-                    <WeatherIcon code="01d" />
+                    <WeatherIcon code={forcast[1].weather[0].icon} />
                   </span>
                 </div>
               </div>
@@ -327,7 +328,7 @@ export default function Circular(props) {
                   className="WeatherForcasrDay"
                   id="WeatherForcasrDay-right-bottom"
                 >
-                  Thu
+                  <WeatherForcastDay data={forcast[2]} />
                 </div>
 
                 <div className="WeatherForcast-temperatures">
@@ -335,17 +336,17 @@ export default function Circular(props) {
                     className="WeatherForcast-temperatures-max"
                     id="WeatherForcast-temperatures-max-right-bottom"
                   >
-                    19°
+                    {Math.round(forcast[2].temp.max)}°
                   </span>
                   <span
                     className="WeatherForcast-temperatures-min"
                     id="WeatherForcast-temperatures-min-right-bottom"
                   >
-                    10°
+                    {Math.round(forcast[2].temp.min)}°
                   </span>
                 </div>
                 <span id="right-bottom-icon">
-                  <WeatherIcon code="01d" />
+                  <WeatherIcon code={forcast[2].weather[0].icon} />
                 </span>
               </div>
             </div>
