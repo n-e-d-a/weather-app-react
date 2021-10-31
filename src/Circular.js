@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Planet } from "react-planet";
 import SearchIcon from "@material-ui/icons/Search";
+// import { BsSearch } from "react-icons/ bs";
+// import { AiOutlineSearch } from "react-icons/ai";
 import axios from "axios";
-import "./Circular.css";
+import WeatherForcastDay from "./WeatherForcastDay";
 import Weatherinfo from "./Weatherinfo";
 import WeatherIcon from "./WeatherIcon";
-import WeatherForcastDay from "./WeatherForcastDay";
+import "./Circular.css";
+
+
 
 export default function Circular(props) {
   const [city, setCity] = useState(props.defaultCity);
@@ -92,7 +96,8 @@ export default function Circular(props) {
                                 className="input-group-text"
                                 //  onClick={handleSubmit}
                               >
-                                <SearchIcon />
+                                 <SearchIcon /> 
+                                {/* <AiOutlineSearch /> */}
                               </div>
                             </div>
 
