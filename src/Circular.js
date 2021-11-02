@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { Planet } from "react-planet";
 import SearchIcon from "@material-ui/icons/Search";
 // import { BsSearch } from "react-icons/ bs";
@@ -18,6 +18,8 @@ export default function Circular(props) {
   const [longitude, setLongitude] = useState();
   const [forcast, setForcast] = useState(null);
   const [loaded, setLodead] = useState(false);
+
+  
 
   function ForcastResponse(response) {
     setForcast(response.data.daily);
@@ -41,9 +43,12 @@ export default function Circular(props) {
     setLongitude(response.data.coord.lon);
     
   }
+ useEffect(() => {
+   setLodead(false);
+ }, [latitude]);
+
 
   // function Search2(){
-
   //   console.log(latitude);
   //   console.log(longitude);
   //   let apiKeyF = "04b56cea58af88ba207e488d6cd103c8";
@@ -54,8 +59,6 @@ export default function Circular(props) {
   function Search() {
     const apiKey = "20293e98d70925447c2442cb9db0edda";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    console.log(city);
-    console.log(apiUrl);
     axios.get(apiUrl).then(handleResponse);
     let apiUrlF = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
     axios.get(apiUrlF).then(ForcastResponse);
@@ -94,7 +97,7 @@ export default function Circular(props) {
                             <div className="input-group-prepend">
                               <div
                                 className="input-group-text"
-                                //  onClick={handleSubmit}
+                                  onClick={handleSubmit}
                               >
                                  <SearchIcon /> 
                                 {/* <AiOutlineSearch /> */}
@@ -118,7 +121,8 @@ export default function Circular(props) {
                 {/* <div className="menu" id="menu"></div> */}
               </div>
             }
-            openByClick
+            // openByClick
+            open
             orbitRadius={300}
             hideOrbit
             mass={4}
