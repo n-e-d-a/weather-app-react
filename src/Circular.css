@@ -67,6 +67,9 @@ margin-left: 10px;
 .small-circles {
   border-radius: 0% 100% 32% 68% / 0% 68% 32% 100%;
 }
+.WeatherForcast-temperatures-min{
+opacity:60%;
+}
 #right-top {
   transform: rotate(90deg);
 }
@@ -101,7 +104,7 @@ transform: rotate(47deg);
 left:-50px;
 top:0px;
 transform: rotate(47deg);
-opacity: 60%;
+
 }
 
 #right-bottom {
@@ -134,7 +137,7 @@ opacity: 60%;
  top: -112px; 
  left:170px;
  transform: rotate(18deg);
- opacity: 60%;
+ 
 }
 #WeatherForcast-temperatures-max-left-bottom{
  position:absolute;
@@ -179,7 +182,7 @@ top:-85px;
    position: absolute;
 left: -60px;
 top:-85px;
-opacity: 60%;
+
 }
 
 #right-bottom-icon{
@@ -193,7 +196,7 @@ opacity: 60%;
  top: -135px; 
  left:105px;
  transform: rotate(-18deg);
- opacity: 60%;
+ 
 }
 #WeatherForcast-temperatures-max-right-bottom{
  position:absolute;
@@ -233,7 +236,7 @@ padding-top:55px;
   position: absolute;
 padding-left: 200px;
 padding-top:60px;
-opacity: 60%;
+
 }
 #WeatherForcast-temperatures-max-left{
    position: absolute;
@@ -282,7 +285,7 @@ transform: rotate(-42deg);
 left:100px;
 top:127px;
 transform: rotate(-42deg);
-opacity: 60%;
+
 }
 
 
