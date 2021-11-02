@@ -17,8 +17,7 @@ return (
   <div>
     <ul className="mt-2">
       <li>
-        {" "}
-        {month} {dateDay}
+       {month} {dateDay}
       </li>
       <li>
         {hour}:{minute}

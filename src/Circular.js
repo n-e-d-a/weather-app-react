@@ -1,8 +1,6 @@
 import React, { useState , useEffect} from "react";
 import { Planet } from "react-planet";
 import SearchIcon from "@material-ui/icons/Search";
-// import { BsSearch } from "react-icons/ bs";
-// import { AiOutlineSearch } from "react-icons/ai";
 import axios from "axios";
 import WeatherForcastDay from "./WeatherForcastDay";
 import Weatherinfo from "./Weatherinfo";
@@ -24,8 +22,7 @@ export default function Circular(props) {
   function ForcastResponse(response) {
     setForcast(response.data.daily);
     setLodead(true);
-    // console.log(forcast[0].temp.max);
-  }
+   }
 
   function handleResponse(response) {
     console.log(response.data);
@@ -46,15 +43,6 @@ export default function Circular(props) {
  useEffect(() => {
    setLodead(false);
  }, [latitude]);
-
-
-  // function Search2(){
-  //   console.log(latitude);
-  //   console.log(longitude);
-  //   let apiKeyF = "04b56cea58af88ba207e488d6cd103c8";
-  //   let apiUrlF = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKeyF}&units=metric`;
-  //   axios.get(apiUrlF).then(ForcastResponse);
-  // }
 
   function Search() {
     const apiKey = "20293e98d70925447c2442cb9db0edda";
