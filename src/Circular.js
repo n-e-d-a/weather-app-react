@@ -24,33 +24,34 @@ export default function Circular(props) {
     setLodead(true);
    }
 
-  function handleResponse(response) {
-    console.log(response.data);
-    setWeatherData({
-      ready: true,
-      temperature: Math.round(response.data.main.temp),
-      humidity: response.data.main.humidity,
-      wind: Math.round(response.data.wind.speed),
-      city: response.data.name,
-      description: response.data.weather[0].description,
-      icon: response.data.weather[0].icon,
-      date: new Date(response.data.dt * 1000),
-    });
-    setLatitude(response.data.coord.lat);
-    setLongitude(response.data.coord.lon);
-    
-  }
- useEffect(() => {
-   setLodead(false);
- }, [latitude]);
+   function handleResponse(response) {
+     setWeatherData({
+       ready: true,
+       temperature: Math.round(response.data.main.temp),
+       humidity: response.data.main.humidity,
+       wind: Math.round(response.data.wind.speed),
+       city: response.data.name,
+       description: response.data.weather[0].description,
+       icon: response.data.weather[0].icon,
+       date: new Date(response.data.dt * 1000),
+     });
+     setLatitude(response.data.coord.lat);
+     setLongitude(response.data.coord.lon);
+   }
 
-  function Search() {
-    const apiKey = "20293e98d70925447c2442cb9db0edda";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-    let apiUrlF = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrlF).then(ForcastResponse);
-  }
+   useEffect(() => {
+     if (latitude && longitude) {
+       const apiKey = "20293e98d70925447c2442cb9db0edda";
+       let apiUrlF = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+       axios.get(apiUrlF).then(ForcastResponse);
+     }
+   }, [latitude, longitude]);
+
+   function Search() {
+     const apiKey = "20293e98d70925447c2442cb9db0edda";
+     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+     axios.get(apiUrl).then(handleResponse);
+   }
 
   function handleSubmit(event) {
     event.preventDefault();
