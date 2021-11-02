@@ -110,8 +110,8 @@ export default function Circular(props) {
                 {/* <div className="menu" id="menu"></div> */}
               </div>
             }
-            // openByClick
-            open
+             openByClick
+            // open
             orbitRadius={300}
             hideOrbit
             mass={4}
